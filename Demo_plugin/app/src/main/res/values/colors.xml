@@ -3,4 +3,33 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--通用颜色-->
+    <color name="white">#FFFFFF</color>
+    <color name="white_5">#0DFFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_clicked">#F8F8F8</color>
+    <color name="black">#000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="dark_blue">#3A58A6</color>
+    <color name="purple">#661DA7</color>
+    <color name="orange">#ED7424</color>
+    <color name="red_5">#0DDD4041</color>
+    <color name="red_20">#33DD4041</color>
+    <color name="red_90">#E6DD4041</color>
+    <color name="gray">#EEEEEE</color>
+    <color name="gray_5">#0DEEEEEE</color>
+    <color name="gray_20">#33EEEEEE</color>
+    <color name="gray_80">#CCEEEEEE</color>
+    <color name="light_gray">#f5f5f5</color>
+    <color name="dark_gray">#F8F8F8</color>
+    <color name="x_dark_gray">#76828F</color>
+    <color name="x_x_dark_gray">#575E7B</color>
+    <color name="disable">#D5D5D5</color>
+    <color name="bg_blue">#69A4F1</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg_dlg">#424242</color>
+
 </resources>

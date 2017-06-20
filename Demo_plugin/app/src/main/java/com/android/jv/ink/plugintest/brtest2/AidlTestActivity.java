@@ -23,6 +23,7 @@ import com.android.jv.ink.plugintest.aidltest.CyUserCallback;
 import com.android.jv.ink.plugintest.aidltest.CyUserInfo;
 import com.android.jv.ink.plugintest.aidltest.CyUserManager;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.android.jv.ink.plugintest.brtest2.CustomView.TAG;
 
 /**
@@ -35,6 +36,8 @@ public class AidlTestActivity extends Activity {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, AidlTestActivity.class);
+        // 跨进程启动activity需要添加
+        starter.setFlags(FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
 

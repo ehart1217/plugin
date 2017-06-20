@@ -27,9 +27,7 @@ import static com.android.jv.ink.plugintest.demo_as.MainActivity.TAG;
  */
 public class AidlService extends Service {
 
-    //    private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
     private RemoteCallbackList<CyUserCallback> mListenerList = new RemoteCallbackList<>();
-//    private AtomicBoolean mIsServiceDestroyed = new AtomicBoolean(false);
 
     private IBinder mBinder = new CyUserManager.Stub() {
 

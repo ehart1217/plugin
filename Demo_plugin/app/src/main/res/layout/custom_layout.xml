@@ -14,11 +14,11 @@
         android:text="加载出来的插件View" />
 
     <Button
-        android:id="@+id/custom_navigate_to_other_page_btn"
+        android:id="@+id/custom_view_show_dialog"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="点击跳转到其他activity" />
+        android:text="显示dialog" />
 
     <Button
         android:id="@+id/custom_navigate_to_aidl_btn"

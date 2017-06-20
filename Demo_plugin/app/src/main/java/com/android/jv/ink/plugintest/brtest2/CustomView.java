@@ -1,6 +1,7 @@
 package com.android.jv.ink.plugintest.brtest2;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -22,6 +23,8 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     public static final String TAG = "tag_plugin";
     private TextView mDescTv;
     private Context mContext;
+    private Activity mHostActivity;
+    private Dialog mDialog;
 
     public CustomView(Context context) {
         this(context, null);
@@ -35,11 +38,11 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
         super(context, attrs, defStyleAttr);
         mContext = context;
         initView();
-        Log.d(TAG, "context1:" + getContext().getClass()); // ContextImpl.class
-        Log.d(TAG, "context2:" + mContext); // ContextImpl.class
+        Log.d(TAG, "context1:" + getContext().getClass()); // it's ContextImpl.class
+        Log.d(TAG, "context2:" + mContext); // it's ContextImpl.class
         Activity activity = getActivity(mContext);
 
-        Log.d(TAG, "activity1:" + activity); // null
+        Log.d(TAG, "activity1:" + activity); // it's null
     }
 
     private void initView() {
@@ -47,10 +50,12 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
 
         mDescTv = (TextView) findViewById(R.id.custom_view_description_tv);
 
-        View navigateToOtherBtn = findViewById(R.id.custom_navigate_to_other_page_btn);
         View navigateToAidl = findViewById(R.id.custom_navigate_to_aidl_btn);
+
+        View showDialogBtn = findViewById(R.id.custom_view_show_dialog);
+
         navigateToAidl.setOnClickListener(this);
-        navigateToOtherBtn.setOnClickListener(this);
+        showDialogBtn.setOnClickListener(this);
     }
 
     @Nullable
@@ -74,16 +79,33 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
         Log.d(TAG, "context3:" + getContext().getClass()); // ContextImpl.class
 
         Activity activity = getActivity(mContext);
-        Log.d(TAG, "activity2:" + activity); // get the activity!
+        mHostActivity = activity;
+        Log.d(TAG, "activity2:" + activity); //Yes! get the activity!
 
         if (activity != null) {
             activity.getWindowManager();
         }
 
-        View v1 = LayoutInflater.from(getContext()).inflate(R.layout.activity_second, null, false);
-        Log.d(TAG, "v1:" + v1); // get the right layout
         // do something
         // requestData etc..
+    }
+
+    private void showDialog() {
+        if (mDialog == null) {
+            // 用宿主中的Context来创建dialog。
+            mDialog = new Dialog(mHostActivity);
+            // 用插件中的Context来获得布局。
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+
+            // 注意这里，由于没有传递Parent参数，映射的布局中，最外层的布局大小将会失效。
+            View dialogView = inflater.inflate(R.layout.dialog_test, null);
+            Log.d(TAG,dialogView.getClass().toString());
+
+            mDialog.setContentView(dialogView);
+        }
+        if (!mDialog.isShowing()) {
+            mDialog.show();
+        }
     }
 
     @Override
@@ -95,45 +117,10 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.custom_navigate_to_other_page_btn) {
-            SecondActivity.navigateTo(getContext());
-        } else if (id == R.id.custom_navigate_to_aidl_btn) {
+        if (id == R.id.custom_navigate_to_aidl_btn) {
             AidlTestActivity.start(getContext());
+        } else if (id == R.id.custom_view_show_dialog) {
+            showDialog();
         }
     }
-
-//    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            Log.d(TAG, "CustomView Receive Msg!");
-//            mDescTv.setText("收到第二页面的消息以后，改变文字信息");
-//            mDescTv.setTextColor(Color.RED);
-//        }
-//    };
-//
-//
-//    /**
-//     * 注册广播
-//     */
-//    private void registerReceiver() {
-//        Context context = getContext();
-//        if (context == null) {
-//            return;
-//        }
-//        IntentFilter intentFilter = new IntentFilter();
-//        intentFilter.addAction(SecondActivity.ACTION_TEST);
-//        context.registerReceiver(mBroadcastReceiver, intentFilter);
-//    }
-//
-//    /**
-//     * 注销广播
-//     */
-//    private void unregisterReceiver() {
-//        Context context = getContext();
-//        if (context == null) {
-//            return;
-//        }
-//        context.unregisterReceiver(mBroadcastReceiver);
-//    }
-
 }
