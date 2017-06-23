@@ -1,4 +1,4 @@
-package com.android.jv.ink.plugintest.brtest2;
+package com.android.jv.ink.plugintest.plugin;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -76,6 +76,7 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        Log.d(TAG, "onAttachedToWindow");
         Log.d(TAG, "context3:" + getContext().getClass()); // ContextImpl.class
 
         Activity activity = getActivity(mContext);
@@ -109,9 +110,38 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     }
 
     @Override
+    protected void onVisibilityChanged(View changedView, int visibility) {
+        // 有activity切换时，会回调。
+        super.onVisibilityChanged(changedView, visibility);
+        Log.d(TAG, "onVisibilityChanged: visibility:" + visibility);
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        // 有activity切换时，会回调。
+        super.onWindowVisibilityChanged(visibility);
+        Log.d(TAG, "onWindowVisibilityChanged: visibility:" + visibility);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        // 有activity切换时，会回调。
+        super.onWindowFocusChanged(hasWindowFocus);
+        Log.d(TAG, "onWindowFocusChanged: hasWindowFocus:" + hasWindowFocus);
+    }
+
+    @Override
+    public void onScreenStateChanged(int screenState) {
+        super.onScreenStateChanged(screenState);
+        // 锁屏会回调。
+        Log.d(TAG, "onScreenStateChanged: screenState:" + screenState);
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         // do some recycling work
         super.onDetachedFromWindow();
+        Log.d(TAG, "onDetachedFromWindow");
     }
 
     @Override

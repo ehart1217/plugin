@@ -1,4 +1,4 @@
-package com.android.jv.ink.plugintest.brtest2;
+package com.android.jv.ink.plugintest.plugin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

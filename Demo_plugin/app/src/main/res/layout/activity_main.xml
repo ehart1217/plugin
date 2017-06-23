@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.android.jv.ink.plugintest.brtest2.CustomView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.jv.ink.plugintest.plugin.CustomView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

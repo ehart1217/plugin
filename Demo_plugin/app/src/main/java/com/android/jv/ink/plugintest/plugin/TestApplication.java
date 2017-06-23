@@ -1,4 +1,4 @@
-package com.android.jv.ink.plugintest.brtest2;
+package com.android.jv.ink.plugintest.plugin;
 
 import android.app.Application;
 import android.util.Log;
