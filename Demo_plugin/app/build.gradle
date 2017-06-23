@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "com.android.jv.ink.plugintest.brtest2"
+        applicationId "com.android.jv.ink.plugintest.plugin"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

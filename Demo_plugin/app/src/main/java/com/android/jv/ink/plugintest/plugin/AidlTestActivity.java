@@ -5,7 +5,7 @@
    * Unauthorized copying of this file, via any medium is strictly prohibited.
    * */
 
-package com.android.jv.ink.plugintest.brtest2;
+package com.android.jv.ink.plugintest.plugin;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -24,7 +24,7 @@ import com.android.jv.ink.plugintest.aidltest.CyUserInfo;
 import com.android.jv.ink.plugintest.aidltest.CyUserManager;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.android.jv.ink.plugintest.brtest2.CustomView.TAG;
+import static com.android.jv.ink.plugintest.plugin.CustomView.TAG;
 
 /**
  * @author wanchi@coolpad.com

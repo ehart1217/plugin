@@ -1,8 +1,9 @@
-package com.android.jv.ink.plugintest.brtest2;
+package com.android.jv.ink.plugintest.plugin;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -76,6 +77,7 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        Log.d(TAG, "onAttachedToWindow");
         Log.d(TAG, "context3:" + getContext().getClass()); // ContextImpl.class
 
         Activity activity = getActivity(mContext);
@@ -109,9 +111,16 @@ public class CustomView extends FrameLayout implements View.OnClickListener {
     }
 
     @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        Log.d(TAG, "onFocusChanged: focus:" + gainFocus);
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         // do some recycling work
         super.onDetachedFromWindow();
+        Log.d(TAG, "onDetachedFromWindow");
     }
 
     @Override
